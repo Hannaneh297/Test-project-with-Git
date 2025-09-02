@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcm6gvndnp4e4"]
+
+[ext_resource type="PackedScene" uid="uid://dcnwl6yu86p2d" path="res://level.tscn" id="1_nmkr7"]
+[ext_resource type="Script" uid="uid://phi7c40ywnj0" path="res://level_0.gd" id="1_vhh4d"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_vhh4d")
+
+[node name="Player" parent="." instance=ExtResource("1_nmkr7")]
+position = Vector2(430, 308)
+collision_mask = 2
+
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="RestartTimer" to="." method="_on_restart_timer_timeout"]
